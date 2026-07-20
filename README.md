@@ -61,14 +61,15 @@ All project decisions, customization, testing, and final implementation were com
 
 ## 📅 Development Information
 
-| Item               | Details                           |
-| ------------------ | --------------------------------- |
-| Project Name       | Boba Bloom                        |
-| Project Type       | Static Website                    |
-| Category           | Beverage / Bubble Tea / Ice Cream |
-| Development Period | July 2026                         |
-| Developed By       | Alin (ComCityBD)                  |
-| AI Assistance      | OpenCode AI                       |
+| Item          | Details                            |
+| ------------- | ---------------------------------- |
+| Project Name  | Boba Bloom                         |
+| Project Type  | Static Website                     |
+| Category      | Beverage / Bubble Tea / Ice Cream  |
+| Started       | July 19, 2026                      |
+| Last Updated  | July 20, 2026                      |
+| Developer     | [Alin](https://www.alinsworld.com) |
+| AI Assistance | OpenCode AI                        |
 
 ---
 
