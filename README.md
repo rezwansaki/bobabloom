@@ -13,6 +13,8 @@ The website showcases a colorful collection of drinks, including bubble tea, fru
 
 This project is intended as a portfolio/demo website and does not include backend functionality such as authentication, ordering, or payment processing.
 
+A modified version of this project's frontend implementation was used in a Computer City (CCTL) project.
+
 ---
 
 ## ✨ Features
@@ -67,7 +69,7 @@ All project decisions, customization, testing, and final implementation were com
 | Project Type  | Static Website                     |
 | Category      | Beverage / Bubble Tea / Ice Cream  |
 | Started       | July 19, 2026                      |
-| Last Updated  | July 20, 2026                      |
+| Last Updated  | July 21, 2026                      |
 | Developer     | [Alin](https://www.alinsworld.com) |
 | AI Assistance | OpenCode AI                        |
 
