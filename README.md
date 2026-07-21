@@ -149,6 +149,6 @@ Special thanks to **OpenCode AI** for providing AI-assisted development support 
 
 ## 👨‍💻 Developer
 
-**Alin (ComCityBD)**
+**[Alin](https://www.alinsworld.com)**
 
 Developed with ❤️ using Nuxt, Tailwind CSS, and OpenCode AI.
