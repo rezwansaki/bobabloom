@@ -1,0 +1,177 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "slug": "milk-tea",
+      "name": "Milk Tea",
+      "description": "Classic milk teas made with fresh ingredients and chewy boba pearls",
+      "image": "/images/categories/milk-tea.jpg",
+      "bg": "linear-gradient(135deg, #FEF3C7, #FDE68A)",
+      "products": [
+        {
+          "id": 1,
+          "slug": "brown-sugar-milk-tea",
+          "name": "Brown Sugar Milk Tea",
+          "description": "Handmade boba pearls with rich brown sugar syrup and fresh milk",
+          "category": "Milk Tea",
+          "category_slug": "milk-tea",
+          "price": "6.99",
+          "rating": 4.9,
+          "spice": "Mild",
+          "favorited": true,
+          "stock": true,
+          "fallback": "from-amber-200 to-amber-100",
+          "features": [
+            "Handmade boba pearls",
+            "Rich brown sugar syrup",
+            "Fresh whole milk",
+            "Available hot or iced"
+          ],
+          "images": [
+            "/images/products/brown-sugar-milk-tea-1.jpg",
+            "/images/products/brown-sugar-milk-tea-2.jpg"
+          ]
+        },
+        {
+          "id": 4,
+          "slug": "taro-milk-tea",
+          "name": "Taro Milk Tea",
+          "description": "Creamy taro root with chewy boba pearls and a hint of vanilla",
+          "category": "Milk Tea",
+          "category_slug": "milk-tea",
+          "price": "7.29",
+          "rating": 4.7,
+          "spice": "Mild",
+          "favorited": true,
+          "stock": true,
+          "fallback": "from-purple-200 to-purple-100",
+          "features": [
+            "Real taro root pur\u00e9e",
+            "Chewy boba pearls",
+            "Hint of Madagascar vanilla",
+            "Creamy dairy or oat milk"
+          ],
+          "images": [
+            "/images/products/taro-milk-tea-1.jpg",
+            "/images/products/taro-milk-tea-2.jpg"
+          ]
+        },
+        {
+          "id": 6,
+          "slug": "thai-milk-tea",
+          "name": "Thai Milk Tea",
+          "description": "Authentic Thai tea with condensed milk and chewy boba pearls",
+          "category": "Milk Tea",
+          "category_slug": "milk-tea",
+          "price": "7.29",
+          "rating": 4.7,
+          "spice": "Mild",
+          "favorited": true,
+          "stock": true,
+          "fallback": "from-amber-200 to-amber-100",
+          "features": [
+            "Authentic Thai tea blend",
+            "Sweetened condensed milk",
+            "Chewy tapioca pearls",
+            "Bold and creamy flavor"
+          ],
+          "images": [
+            "/images/products/thai-milk-tea-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "fruit-tea",
+      "name": "Fruit Tea",
+      "description": "Refreshing fruit-based teas bursting with natural flavors",
+      "image": "/images/categories/fruit-tea.jpg",
+      "bg": "linear-gradient(135deg, #FDF2F8, #FBCFE8)",
+      "products": [
+        {
+          "id": 2,
+          "slug": "strawberry-bliss",
+          "name": "Strawberry Bliss",
+          "description": "Fresh strawberry puree with creamy milk and strawberry popping pearls",
+          "category": "Fruit Tea",
+          "category_slug": "fruit-tea",
+          "price": "7.49",
+          "rating": 4.8,
+          "spice": "Mild",
+          "favorited": false,
+          "stock": true,
+          "fallback": "from-pink-200 to-pink-100",
+          "features": [
+            "Fresh strawberry pur\u00e9e",
+            "Strawberry popping pearls",
+            "Creamy milk base",
+            "Naturally sweetened"
+          ],
+          "images": [
+            "/images/products/strawberry-bliss-1.jpg",
+            "/images/products/strawberry-bliss-2.jpg"
+          ]
+        },
+        {
+          "id": 3,
+          "slug": "mango-fruit-tea",
+          "name": "Mango Fruit Tea",
+          "description": "Sweet mango puree with coconut jelly and green tea base",
+          "category": "Fruit Tea",
+          "category_slug": "fruit-tea",
+          "price": "7.99",
+          "rating": 4.9,
+          "spice": "Medium",
+          "favorited": false,
+          "stock": true,
+          "fallback": "from-yellow-200 to-yellow-100",
+          "features": [
+            "Alphonso mango pur\u00e9e",
+            "Coconut jelly",
+            "Jasmine green tea base",
+            "Refreshing and light"
+          ],
+          "images": [
+            "/images/products/mango-fruit-tea-1.jpg",
+            "/images/products/mango-fruit-tea-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "specialty",
+      "name": "Specialty",
+      "description": "Unique handcrafted creations for the adventurous palate",
+      "image": "/images/categories/specialty.jpg",
+      "bg": "linear-gradient(135deg, #FCE7F3, #F9A8D4)",
+      "products": [
+        {
+          "id": 5,
+          "slug": "matcha-latte",
+          "name": "Matcha Latte",
+          "description": "Premium matcha whisked to perfection with creamy oat milk and honey",
+          "category": "Specialty",
+          "category_slug": "specialty",
+          "price": "7.29",
+          "rating": 4.7,
+          "spice": "Mild",
+          "favorited": true,
+          "stock": true,
+          "fallback": "from-green-200 to-green-100",
+          "features": [
+            "Ceremonial-grade matcha",
+            "Creamy oat milk",
+            "Local wildflower honey",
+            "Stone-ground Japanese tea"
+          ],
+          "images": [
+            "/images/products/matcha-latte-1.jpg",
+            "/images/products/matcha-latte-2.jpg"
+          ]
+        }
+      ]
+    }
+  ]
+}

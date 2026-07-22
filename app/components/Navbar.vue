@@ -10,28 +10,25 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16 md:h-20">
         <div class="flex items-center gap-8">
-          <NuxtLink to="/" class="flex items-center gap-2 group">
+          <NuxtLink to="/" class="flex items-center gap-1 group">
             <div
-              class="w-9 h-9 rounded-xl bg-gradient-to-br from-primary-400 to-pink-500 flex items-center justify-center shadow-lg shadow-primary-500/25 transition-transform duration-300 group-hover:scale-110"
+              class="w-10 h-10 flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
             >
-              <svg
-                class="w-5 h-5 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="2.5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"
-                />
-              </svg>
+              <img
+                src="/logo.png"
+                alt="Boba Bloom Logo"
+                class="w-full h-full object-contain"
+              />
             </div>
+
             <span
               class="font-display font-bold text-xl tracking-tight bg-gradient-to-r from-primary-500 to-pink-500 bg-clip-text text-transparent"
             >
-              Boba Bloom
+              <img
+                src="/Site_Text_Logo.png"
+                alt="Boba Bloom Logo"
+                class="w-20 md:w-28 lg:w-40 h-auto object-contain"
+              />
             </span>
           </NuxtLink>
 
@@ -42,23 +39,84 @@
               :to="item.href"
               class="px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300"
               :class="
-                activeSection === item.href.slice(1)
+                isItemActive(item)
                   ? 'bg-primary-50 text-primary-600 font-semibold'
                   : 'text-gray-700 hover:bg-primary-50 hover:text-primary-600'
               "
             >
               {{ item.label }}
             </NuxtLink>
+
+            <div class="relative">
+              <button
+                class="px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 inline-flex items-center gap-1"
+                :class="
+                  selectedCategorySlug
+                    ? 'bg-primary-50 text-primary-600 font-semibold'
+                    : 'text-gray-700 hover:bg-primary-50 hover:text-primary-600'
+                "
+                @click="categoriesOpen = !categoriesOpen"
+              >
+                Categories
+                <svg
+                  class="w-3.5 h-3.5 transition-transform duration-300"
+                  :class="categoriesOpen ? 'rotate-180' : ''"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              </button>
+
+              <div
+                v-if="categoriesOpen"
+                class="absolute top-full left-0 mt-2 w-56 rounded-2xl bg-white shadow-xl border border-gray-100 py-2 backdrop-blur-xl z-50"
+                @mouseleave="categoriesOpen = false"
+              >
+                <button
+                  class="w-full text-left px-5 py-2.5 text-sm font-medium text-gray-600 hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 rounded-xl"
+                  @click="goToCategory(null)"
+                >
+                  All Drinks
+                </button>
+                <div class="mx-4 my-1 border-t border-gray-100" />
+                <button
+                  v-for="cat in data.categories"
+                  :key="cat.id"
+                  class="w-full text-left px-5 py-2.5 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 rounded-xl flex items-center gap-3"
+                  @click="goToCategory(cat.slug)"
+                >
+                  <span
+                    class="w-2 h-2 rounded-full"
+                    :class="
+                      cat.slug === 'milk-tea'
+                        ? 'bg-amber-400'
+                        : cat.slug === 'fruit-tea'
+                          ? 'bg-pink-400'
+                          : 'bg-purple-400'
+                    "
+                  />
+                  {{ cat.name }}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
         <div class="flex items-center gap-2 sm:gap-3">
-          <button
-            class="p-2.5 rounded-xl transition-all duration-300 text-gray-600 hover:text-primary-600 hover:bg-primary-50"
-            aria-label="Search"
+          <NuxtLink
+            to="/menu"
+            class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white rounded-xl transition-all duration-300 shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 hover:-translate-y-0.5"
+            style="background: linear-gradient(135deg, #f59e0b, #fbbf24)"
           >
             <svg
-              class="w-5 h-5"
+              class="w-4 h-4"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -67,61 +125,11 @@
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"
               />
             </svg>
-          </button>
-
-          <!-- <button
-            class="p-2.5 rounded-xl transition-all duration-300 relative group text-gray-600 hover:text-primary-600 hover:bg-primary-50"
-            aria-label="Cart"
-          >
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
-              />
-            </svg>
-            <span
-              class="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-br from-pink-500 to-secondary-500 rounded-full text-white text-[10px] font-bold flex items-center justify-center shadow-lg shadow-pink-500/30"
-              >3</span
-            >
-          </button> -->
-
-          <!-- <NuxtLink
-            to="/order"
-            class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 font-semibold text-sm rounded-xl text-white transition-all duration-300 shadow-lg"
-            style="
-              background: linear-gradient(135deg, #f59e0b, #ec4899);
-              box-shadow: 0 4px 15px rgba(245, 158, 11, 0.35);
-            "
-            @mouseenter="hoverBtn = true"
-            @mouseleave="hoverBtn = false"
-          >
-            Order Now
-            <svg
-              class="w-4 h-4 transition-transform duration-300"
-              :class="hoverBtn ? 'translate-x-1' : ''"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2.5"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-              />
-            </svg>
-          </NuxtLink> -->
-
+            Browse Menu
+          </NuxtLink>
           <button
             class="lg:hidden p-2.5 rounded-xl transition-all duration-300 text-gray-600"
             @click="mobileOpen = !mobileOpen"
@@ -179,7 +187,7 @@
             :to="item.href"
             class="block px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300"
             :class="
-              activeSection === item.href.slice(1)
+              isItemActive(item)
                 ? 'bg-primary-50 text-primary-600 font-semibold'
                 : 'text-gray-700 hover:bg-primary-50 hover:text-primary-600'
             "
@@ -187,14 +195,60 @@
           >
             {{ item.label }}
           </NuxtLink>
-          <!-- <NuxtLink
-            to="/order"
-            class="block px-4 py-3 text-sm font-semibold rounded-xl text-white text-center transition-all duration-300 mt-2"
-            style="background: linear-gradient(135deg, #f59e0b, #ec4899)"
+
+          <div class="pt-2 pb-1">
+            <p
+              class="px-4 py-1 text-xs font-semibold text-gray-400 uppercase tracking-wider"
+            >
+              Categories
+            </p>
+            <button
+              class="w-full text-left px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 text-gray-700 hover:bg-primary-50 hover:text-primary-600"
+              @click="goToCategory(null)"
+            >
+              All Drinks
+            </button>
+            <button
+              v-for="cat in data.categories"
+              :key="cat.id"
+              class="w-full text-left px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 flex items-center gap-3 text-gray-700 hover:bg-primary-50 hover:text-primary-600"
+              @click="goToCategory(cat.slug)"
+            >
+              <span
+                class="w-2 h-2 rounded-full"
+                :class="
+                  cat.slug === 'milk-tea'
+                    ? 'bg-amber-400'
+                    : cat.slug === 'fruit-tea'
+                      ? 'bg-pink-400'
+                      : 'bg-purple-400'
+                "
+              />
+              {{ cat.name }}
+            </button>
+          </div>
+
+          <NuxtLink
+            to="/menu"
+            class="flex items-center justify-center gap-2 w-full px-4 py-3.5 mt-3 text-sm font-semibold text-white rounded-xl transition-all duration-300 shadow-lg shadow-primary-500/30"
+            style="background: linear-gradient(135deg, #f59e0b, #fbbf24)"
             @click="mobileOpen = false"
           >
-            Order Now
-          </NuxtLink> -->
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"
+              />
+            </svg>
+            Browse Menu
+          </NuxtLink>
         </div>
       </div>
     </Transition>
@@ -202,21 +256,46 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
+import data from "~/data/products.json";
 
 const { isScrolled } = useScrollPosition();
+const { selectedCategorySlug, selectCategory, clearCategory } =
+  useCategoryFilter();
 const mobileOpen = ref(false);
-const hoverBtn = ref(false);
 const activeSection = ref("hero");
+const categoriesOpen = ref(false);
+
+const route = useRoute();
 
 const menuItems = [
   { label: "Home", href: "#hero" },
-  { label: "Menu", href: "#featured" },
-  { label: "Best Seller", href: "#featured" },
+  { label: "Best Seller", href: "/" },
   { label: "About", href: "#about" },
   { label: "Reviews", href: "#reviews" },
   { label: "Contact", href: "#footer" },
 ];
+
+function isItemActive(item) {
+  if (item.href.startsWith("#")) {
+    return activeSection.value === item.href.slice(1);
+  }
+  return route.path === item.href;
+}
+
+function goToCategory(slug) {
+  categoriesOpen.value = false;
+  mobileOpen.value = false;
+  if (slug) {
+    selectCategory(slug);
+  } else {
+    clearCategory();
+  }
+  const el = document.getElementById("featured");
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth" });
+  }
+}
 
 function onScroll() {
   const sections = ["hero", "featured", "about", "reviews", "footer"];
